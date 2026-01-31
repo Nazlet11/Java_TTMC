@@ -3,8 +3,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Jeu {
+
+    static boolean victoireCheck(){
+        return true;
+    }
+
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        CarteBot carteBot = new CarteBot("null", 1, "null");
         String reponseStr;
 
         int nbEquipe = 0;
@@ -69,6 +76,26 @@ public class Jeu {
         for(Joueur lejoueur : joueurs){
             System.out.println(lejoueur.toString());
         }
+
+        System.out.println("\nEntrez le nombre de case du plateau : ");
+        reponseStr = sc.nextLine();
+        Plateau plateau = new Plateau(Integer.parseInt(reponseStr));
+
+
+        System.out.println("Le jeux commence.");
+        // game loop
+        while (victoireCheck()){
+            System.out.println("Sélection d'une carte au hasard...");
+            carteBot.pickUneCarte();
+            System.out.println(carteBot.getSujet());
+            reponseStr = sc.nextLine();
+            carteBot.reponseJugement();
+
+        }
+
+
+
+
 
 
 
