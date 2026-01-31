@@ -85,19 +85,19 @@ public class Jeu {
         System.out.println("Le jeux commence.");
         // game loop
         while (victoireCheck()){
-            System.out.println("Sélection d'une carte au hasard...");
-            carteBot.pickUneCarte();
-            System.out.println(carteBot.getSujet());
-            reponseStr = sc.nextLine();
-            carteBot.reponseJugement();
 
+            for(Joueur joueurQuiJoue : joueurs){
+                String numNomClub = joueurQuiJoue.getNomJoueur() + " Numéro " + joueurQuiJoue.getNumJoueur() + " de l'équipe " + joueurQuiJoue.getEquipe().getNomEquipe();
+
+                System.out.println("C'est au tour de " + numNomClub + " de jouer!");
+                System.out.println("Sélection d'une carte au hasard...");
+                carteBot.pickUneCarte();
+                System.out.println(carteBot.getSujet());
+                reponseStr = sc.nextLine();
+                carteBot.reponseJugement(reponseStr, joueurQuiJoue);
+
+            }
         }
-
-
-
-
-
-
-
     }
 }
+
