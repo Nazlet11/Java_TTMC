@@ -24,7 +24,7 @@ public class Joueur {
 
 
     public String toString(){
-        String message = "Numéro : " + this.numJoueur + ", Nom : " + this.nomJoueur + ", Nombre de cases franchies : " + this.casesFranchiesnb + " , Equipe : " + this.equipe;
+        String message = "\n\nNuméro : " + this.numJoueur + ", Nom : " + this.nomJoueur + ", Nombre de cases franchies : " + this.casesFranchiesnb + "\nEquipe : " + this.equipe;
         return message;
     }
 
