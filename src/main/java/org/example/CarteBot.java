@@ -8,7 +8,6 @@ public class CarteBot {
     private int difficulté;
     private String question;
     private String reponse;
-    Scanner sc;
 
     public String getSujet(){return sujet;}
     public int getDifficulté(){return difficulté;}
@@ -18,14 +17,14 @@ public class CarteBot {
         this.sujet = "Féculents";
         this.difficulté = 1;
         this.question = "Sont-ils d'orgine animale ou végétale?";
+        this.reponse = "Vegetale";
     }
 
-    public void pickUneCarte(){
+    public void pickUneCarte(Scanner sc){
         // faire randomisation de carte
         int difMax = 10;
-        Scanner sc = new Scanner(System.in);
         System.out.println("Choisissez une difficulté : ");
-        int difChoisie = sc.nextInt();
+        int difChoisie = Integer.parseInt(sc.nextLine());
         while(true){
             if (difChoisie > difMax || difChoisie < 1){
                 System.out.println("Ce chiffre n'est pas valide");
@@ -38,15 +37,22 @@ public class CarteBot {
             }
         }
         // faire set up des variable de carteBot
+        /*
+        this.sujet = sujetCarte;
+        this.difficulté = difCarte;
+        this.question = quesCarte;
+        this.reponse = repCarte;
+         */
     }
 
-    public boolean reponseJugement(String reponseJoueur, Joueur joueur){
+    public void reponseJugement(Joueur joueur, Scanner sc){
         System.out.println("Repondez sans détérminants");
+        String reponseJoueur = sc.nextLine();
         if (reponseJoueur.equalsIgnoreCase(reponse)){
-            joueur.avancerJoueur();
-            return true;
+            joueur.avancerJoueur(difficulté);
+            System.out.println("Bonne réponse!");
         } else{
-            return false;
+            System.out.println("Mauvaise réponse!");
         }
 
     }

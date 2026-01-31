@@ -37,8 +37,8 @@ public class Joueur {
         return equipe;
     }
 
-    public void avancerJoueur(){
-        this.casesFranchiesNb = this.casesFranchiesNb + 1;
+    public void avancerJoueur(int nbCaseA_Avancer){
+        this.casesFranchiesNb = casesFranchiesNb + nbCaseA_Avancer;
     }
 }
 
