@@ -4,6 +4,8 @@ import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.File;
+import java.util.Random;
 
 public class CarteBot {
 
@@ -13,6 +15,9 @@ public class CarteBot {
     private String question;
     private String reponse;
     private String cheminCarte;
+
+    File dossier;
+    Random random;
 
     public String getSujet(){return sujet;}
     public int getDifficulté(){return difficulté;}
@@ -27,7 +32,19 @@ public class CarteBot {
         this.difMax = 10;
         this.question = "Sont-ils d'orgine animale ou végétale?";
         this.reponse = "Vegetale";
-        this.cheminCarte = "C:/CartesCSV/plaisir.csv";
+        this.cheminCarte = "C:/CartesCSV";
+
+        this.dossier = new File(cheminCarte);
+        this.random = new Random();
+    }
+
+    public void selectionCarte(){
+        File[] fichiers = dossier.listFiles();
+
+        int rd = random.nextInt(fichiers.length);
+        System.out.println(fichiers[rd].getName());
+
+        this.cheminCarte = "C:/CartesCSV" + "/"  + fichiers[rd].getName();
     }
 
     public void lectureSujet(){
@@ -111,6 +128,7 @@ public class CarteBot {
             joueur.avancerJoueur(difficulté);
         } else{
             System.out.println("Mauvaise réponse!");
+            System.out.println("Le joueur reste a la case " + joueur.getCasesFranchiesNb());
         }
 
     }

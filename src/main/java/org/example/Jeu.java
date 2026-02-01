@@ -91,6 +91,7 @@ public class Jeu {
 
             System.out.println("C'est au tour de " + nomNumClub + " de jouer!");
             System.out.println("Sélection d'une carte au hasard...");
+            carteBot.selectionCarte();
             carteBot.lectureSujet();
             carteBot.selectionDifficulte(sc);
             carteBot.reponseJugement(joueurQuiJoue, sc);
