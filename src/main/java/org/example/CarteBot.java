@@ -9,6 +9,7 @@ public class CarteBot {
 
     private String sujet;
     private int difficulté;
+    private int difMax;
     private String question;
     private String reponse;
     private String cheminCarte;
@@ -23,24 +24,31 @@ public class CarteBot {
     public CarteBot(String sujet, int difficulté, String question){
         this.sujet = "Féculents";
         this.difficulté = 1;
+        this.difMax = 10;
         this.question = "Sont-ils d'orgine animale ou végétale?";
         this.reponse = "Vegetale";
         this.cheminCarte = "C:/CartesCSV/plaisir.csv";
     }
 
-    public void lectureQuestion(){
+    public void lectureSujet(){
 
         try (BufferedReader br = new BufferedReader(new FileReader(cheminCarte))) {
 
             String ligne = br.readLine();
 
+
+            while ((ligne = br.readLine()) != null) {
                 String[] colonnes = ligne.split(";");
+                this.difMax = Integer.parseInt(colonnes[1]);
 
-                if (colonnes[2] != null){
-                    this.question = colonnes[2];
+                if (colonnes.length < 4){ System.out.println("Fichier CSV pas correct");}
+                if (colonnes[0] != null){
+                    this.sujet = colonnes[0];
 
-                    System.out.println(colonnes[2] + " | " + colonnes[3]);
+                }
             }
+
+            System.out.println("Le sujet sera : " + this.sujet);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -52,11 +60,10 @@ public class CarteBot {
 
             String ligne;
 
-            int difMax = 10;
-            System.out.println("Choisissez une difficulté : ");
+            System.out.println("La difficulté max est " + this.difMax + ". Choisissez une difficulté : ");
             int difChoisie = Integer.parseInt(sc.nextLine());
             while(true){
-                if (difChoisie > difMax || difChoisie < 1){
+                if (difChoisie > this.difMax || difChoisie < 1){
                     System.out.println("Ce chiffre n'est pas valide");
                     System.out.println("Choisissez une difficulté : ");
                     difChoisie = sc.nextInt();
@@ -67,8 +74,9 @@ public class CarteBot {
                 }
             }
 
-
-            while ((ligne = br.readLine()) != null) {
+            //bool stop pour s arreter si la lecture du fichier est arrivé a la difficulté demandé de l utilisaztruerz
+            boolean stop = false;
+            while ((ligne = br.readLine()) != null && !stop) {
 
                 String[] colonnes = ligne.split(";");
 
@@ -77,13 +85,14 @@ public class CarteBot {
                     this.difficulté = Integer.parseInt(colonnes[1]);
                     this.question = colonnes[2];
                     this.reponse = colonnes[3];
+                    System.out.println("La question est " + "\"" + colonnes[2] + "\"");
+                    stop = true;
                 }
 
                 if (colonnes.length < 4){ System.out.println("Fichier CSV pas correct");}
 
 
-                System.out.println(colonnes[2] + " | " + colonnes[3]);
-                /* Debug
+                /* debug
                 System.out.println(
                         colonnes[0] + " | " + Integer.parseInt(colonnes[1]) + " | " + colonnes[2] + " | " + colonnes[3]
                 );
@@ -95,11 +104,11 @@ public class CarteBot {
     }
 
     public void reponseJugement(Joueur joueur, Scanner sc){
-        System.out.println("Repondez sans détérminants");
+        System.out.println("Donnez la réponse : ");
         String reponseJoueur = sc.nextLine();
         if (reponseJoueur.equalsIgnoreCase(reponse)){
-            joueur.avancerJoueur(difficulté);
             System.out.println("Bonne réponse!");
+            joueur.avancerJoueur(difficulté);
         } else{
             System.out.println("Mauvaise réponse!");
         }

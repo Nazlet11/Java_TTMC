@@ -91,11 +91,11 @@ public class Jeu {
 
             System.out.println("C'est au tour de " + nomNumClub + " de jouer!");
             System.out.println("Sélection d'une carte au hasard...");
-            carteBot.lectureQuestion();
+            carteBot.lectureSujet();
             carteBot.selectionDifficulte(sc);
-            System.out.println(carteBot.getSujet());
             carteBot.reponseJugement(joueurQuiJoue, sc);
 
+            plateau.afficherCasesJoueurs(joueurs);
             if (victoireCheck(joueurQuiJoue, plateau)) {
                 System.out.println("Le joueur" + joueurQuiJoue.getNomJoueur() + " et son équipe " + joueurQuiJoue.getEquipe().getNomEquipe() + " ont gagné!");
                 break;

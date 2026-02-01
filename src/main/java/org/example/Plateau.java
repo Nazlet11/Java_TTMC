@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.ArrayList;
+
 public class Plateau {
     private int nbCase;
 
@@ -9,6 +11,14 @@ public class Plateau {
 
     public Plateau(int nbCase){
         this.nbCase = nbCase;
+    }
+
+    public void afficherCasesJoueurs(ArrayList<Joueur> joueurs){
+        System.out.println("");
+        for (Joueur lejoueur : joueurs) {
+            int nbCaseRestante = nbCase - lejoueur.getCasesFranchiesNb();
+            System.out.println("Le joueur " + lejoueur.getNomJoueur() + " est case " + lejoueur.getCasesFranchiesNb() + " il est a " + nbCaseRestante + " cases de la fin");
+        }
     }
 
 
