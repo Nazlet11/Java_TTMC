@@ -32,7 +32,7 @@ public class CarteBot {
         this.difMax = 10;
         this.question = "Sont-ils d'orgine animale ou végétale?";
         this.reponse = "Vegetale";
-        this.cheminCarte = "C:/CartesCSV";
+        this.cheminCarte = "/CartesCSV";
 
         this.dossier = new File(cheminCarte);
         this.random = new Random();
@@ -44,7 +44,7 @@ public class CarteBot {
         int rd = random.nextInt(fichiers.length);
         System.out.println(fichiers[rd].getName());
 
-        this.cheminCarte = "C:/CartesCSV" + "/"  + fichiers[rd].getName();
+        this.cheminCarte = "/CartesCSV" + "/"  + fichiers[rd].getName();
     }
 
     public void lectureSujet(){
@@ -128,7 +128,7 @@ public class CarteBot {
             joueur.avancerJoueur(difficulté);
         } else{
             System.out.println("Mauvaise réponse!");
-            System.out.println("Le joueur reste a la case " + joueur.getCasesFranchiesNb());
+            System.out.println("Le joueur reste a la case " + joueur.getCase());
         }
 
     }

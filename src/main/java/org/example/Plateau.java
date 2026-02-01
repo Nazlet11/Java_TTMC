@@ -16,8 +16,8 @@ public class Plateau {
     public void afficherCasesJoueurs(ArrayList<Joueur> joueurs){
         System.out.println("");
         for (Joueur lejoueur : joueurs) {
-            int nbCaseRestante = nbCase - lejoueur.getCasesFranchiesNb();
-            System.out.println("Le joueur " + lejoueur.getNomJoueur() + " est case " + lejoueur.getCasesFranchiesNb() + " il est a " + nbCaseRestante + " cases de la fin");
+            int nbCaseRestante = nbCase - lejoueur.getCase();
+            System.out.println("Le joueur " + lejoueur.getNomJoueur() + " est case " + lejoueur.getCase() + " il est a " + nbCaseRestante + " cases de la fin");
         }
     }
 

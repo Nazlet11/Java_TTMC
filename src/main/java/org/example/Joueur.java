@@ -7,7 +7,7 @@ public class Joueur {
     private String nomJoueur;
     private Equipe equipe;
 
-    public int getCasesFranchiesNb(){ return casesFranchiesNb; }
+    public int getCase(){ return casesFranchiesNb; }
     public int getNumJoueur(){ return numJoueur; }
     public String getNomJoueur(){ return nomJoueur; }
 

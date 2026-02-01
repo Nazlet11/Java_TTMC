@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Jeu {
 
     static boolean victoireCheck(Joueur joueur, Plateau plateau){
-        if (joueur.getCasesFranchiesNb() == plateau.getNbCase()){
+        if (joueur.getCase() >= plateau.getNbCase()){
             return true;
         } else {
             return false;
@@ -86,25 +86,29 @@ public class Jeu {
 
         System.out.println("Le jeux commence.");
         // game loop
-        for (Joueur joueurQuiJoue : joueurs) {
-            String nomNumClub = joueurQuiJoue.getNomJoueur() + " Numéro " + joueurQuiJoue.getNumJoueur() + " de l'équipe " + joueurQuiJoue.getEquipe().getNomEquipe();
+        boolean ccontinue = true;
+        while(ccontinue){
+            for (Joueur joueurQuiJoue : joueurs) {
+                String nomNumClub = joueurQuiJoue.getNomJoueur() + " Numéro " + joueurQuiJoue.getNumJoueur() + " de l'équipe " + joueurQuiJoue.getEquipe().getNomEquipe();
 
-            System.out.println("C'est au tour de " + nomNumClub + " de jouer!");
-            System.out.println("Sélection d'une carte au hasard...");
-            carteBot.selectionCarte();
-            carteBot.lectureSujet();
-            carteBot.selectionDifficulte(sc);
-            carteBot.reponseJugement(joueurQuiJoue, sc);
+                System.out.println("C'est au tour de " + nomNumClub + " de jouer!");
+                System.out.println("Sélection d'une carte au hasard...");
+                carteBot.selectionCarte();
+                carteBot.lectureSujet();
+                carteBot.selectionDifficulte(sc);
+                carteBot.reponseJugement(joueurQuiJoue, sc);
 
-            plateau.afficherCasesJoueurs(joueurs);
-            if (victoireCheck(joueurQuiJoue, plateau)) {
-                System.out.println("Le joueur" + joueurQuiJoue.getNomJoueur() + " et son équipe " + joueurQuiJoue.getEquipe().getNomEquipe() + " ont gagné!");
-                break;
+                plateau.afficherCasesJoueurs(joueurs);
+                if (victoireCheck(joueurQuiJoue, plateau)) {
+                    ccontinue = false;
+                    System.out.println("Le joueur" + joueurQuiJoue.getNomJoueur() + " et son équipe " + joueurQuiJoue.getEquipe().getNomEquipe() + " ont gagné!");
+                    break;
+                }
             }
-
         }
         // stats
         System.out.println("Afficher les statistiques ?\nO : oui  || N : non");
+        reponseStr = sc.nextLine();
         if (reponseStr.equalsIgnoreCase("o")) {
             for (Joueur lejoueur : joueurs) {
                 System.out.println(lejoueur.toString());
