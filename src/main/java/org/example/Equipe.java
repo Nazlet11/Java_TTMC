@@ -6,7 +6,7 @@ public class Equipe {
     private int numEquipe;
     private int nbJoueur;
 
-    public String  getNomEquipe(){ return nomEquipe; }
+    public String getNomEquipe(){ return nomEquipe; }
     public int getNumEquipe(){ return numEquipe; }
     public int getNbJoueur(){ return nbJoueur; }
 
