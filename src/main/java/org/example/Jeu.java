@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Jeu {
 
     static boolean victoireCheck(Joueur joueur, Plateau plateau){
-        if (joueur.getCase() >= plateau.getNbCase()){
+        if (joueur.getCasesFranchiesNb() >= plateau.getNbCase()){
             return true;
         } else {
             return false;
@@ -16,7 +16,7 @@ public class Jeu {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        CarteBot carteBot = new CarteBot("null", 1, "null");
+        Carte carte = new Carte("null", 1, "null");
         String reponseStr;
 
         int nbEquipe = 0;
@@ -93,10 +93,10 @@ public class Jeu {
 
                 System.out.println("C'est au tour de " + nomNumClub + " de jouer!");
                 System.out.println("Sélection d'une carte au hasard...");
-                carteBot.selectionCarte();
-                carteBot.lectureSujet();
-                carteBot.selectionDifficulte(sc);
-                carteBot.reponseJugement(joueurQuiJoue, sc);
+                carte.selectionCarte();
+                carte.lectureSujet();
+                carte.selectionDifficulte(sc);
+                carte.reponseJugement(joueurQuiJoue, sc);
 
                 plateau.afficherCasesJoueurs(joueurs);
                 if (victoireCheck(joueurQuiJoue, plateau)) {

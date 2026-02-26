@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.File;
 import java.util.Random;
 
-public class CarteBot {
+public class Carte {
 
     private String sujet;
     private int difficulté;
@@ -26,7 +26,7 @@ public class CarteBot {
 
     public void setCheminCarte(String cheminCarte){this.cheminCarte = cheminCarte;}
 
-    public CarteBot(String sujet, int difficulté, String question){
+    public Carte(String sujet, int difficulté, String question){
         this.sujet = "Féculents";
         this.difficulté = 1;
         this.difMax = 10;
@@ -128,7 +128,7 @@ public class CarteBot {
             joueur.avancerJoueur(difficulté);
         } else{
             System.out.println("Mauvaise réponse!");
-            System.out.println("Le joueur reste a la case " + joueur.getCase());
+            System.out.println("Le joueur reste a la case " + joueur.getCasesFranchiesNb());
         }
 
     }
