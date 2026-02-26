@@ -66,10 +66,12 @@ public class Jeu {
         }
 
         // pr chaque equipe, creation de tt les joueurs
+        int numeroEquipe = 0;
         for (Equipe lequipe : equipes) {
+            numeroEquipe += 1;
             for (int i = 0; i < nbJoueurs; i++) {
                 int numero = (i + 1);
-                System.out.println("\nEntrez le nom du Joueur numéro " + numero + " de l'équipe : ");
+                System.out.println("\nEntrez le nom du Joueur numéro " + numero + " de l'équipe " + numeroEquipe + ": ");
                 reponseStr = sc.nextLine();
                 joueurs.add(new Joueur(numero, reponseStr, lequipe));
             }
