@@ -31,7 +31,9 @@ public class Equipe {
         return message;
     }
 
-    public void avancerJoueur(){
+    public void avancerJoueur(int nbCaseA_Avancer){
+        this.caseDeLequipe = caseDeLequipe + nbCaseA_Avancer;
+        System.out.println("Le joueur a avancé de " + nbCaseA_Avancer + " cases. Il est donc case " + this.caseDeLequipe + " du plateau");
     }
 }
 

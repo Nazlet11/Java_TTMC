@@ -33,9 +33,5 @@ public class Joueur {
         return equipe;
     }
 
-    public void avancerJoueur(int nbCaseA_Avancer){
-        this.casesFranchiesNb = casesFranchiesNb + nbCaseA_Avancer;
-        System.out.println("Le joueur a avancé de " + nbCaseA_Avancer + " cases. Il est donc case " + this.casesFranchiesNb + " du plateau");
-    }
 }
 

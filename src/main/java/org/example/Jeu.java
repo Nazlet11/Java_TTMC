@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class Jeu {
 
-    static boolean victoireCheck(Joueur joueur, Plateau plateau){
-        if (joueur.getCasesFranchiesNb() >= plateau.getNbCase()){
+    static boolean victoireCheck(Equipe equipe, Plateau plateau){
+        if (equipe.getCaseDeLequipe() >= plateau.getNbCase()){
             return true;
         } else {
             return false;
@@ -100,8 +100,8 @@ public class Jeu {
                 carte.selectionDifficulte(sc);
                 carte.reponseJugement(joueurQuiJoue, sc);
 
-                plateau.afficherCasesJoueurs(joueurs);
-                if (victoireCheck(joueurQuiJoue, plateau)) {
+                plateau.afficherCasesJoueurs(equipes);
+                if (victoireCheck(joueurQuiJoue.getEquipe(), plateau)) {
                     ccontinue = false;
                     System.out.println("Le joueur" + joueurQuiJoue.getNomJoueur() + " et son équipe " + joueurQuiJoue.getEquipe().getNomEquipe() + " ont gagné!");
                     break;

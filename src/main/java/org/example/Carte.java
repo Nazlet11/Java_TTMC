@@ -125,10 +125,10 @@ public class Carte {
         String reponseJoueur = sc.nextLine();
         if (reponseJoueur.equalsIgnoreCase(reponse)){
             System.out.println("Bonne réponse!");
-            joueur.avancerJoueur(difficulté);
+            joueur.getEquipe().avancerJoueur(difficulté);
         } else{
             System.out.println("Mauvaise réponse!");
-            System.out.println("Le joueur reste a la case " + joueur.getCasesFranchiesNb());
+            System.out.println("Le joueur reste a la case " + joueur.getEquipe().getCaseDeLequipe());
         }
 
     }

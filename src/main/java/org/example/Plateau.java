@@ -13,11 +13,11 @@ public class Plateau {
         this.nbCase = nbCase;
     }
 
-    public void afficherCasesJoueurs(ArrayList<Joueur> joueurs){
+    public void afficherCasesJoueurs(ArrayList<Equipe> equipes){
         System.out.println("");
-        for (Joueur lejoueur : joueurs) {
-            int nbCaseRestante = nbCase - lejoueur.getCasesFranchiesNb();
-            System.out.println("Le joueur " + lejoueur.getNomJoueur() + " est case " + lejoueur.getCasesFranchiesNb() + " il est a " + nbCaseRestante + " cases de la fin");
+        for (Equipe equipe : equipes) {
+            int nbCaseRestante = nbCase - equipe.getCaseDeLequipe();
+            System.out.println("L'équipe " + equipe.getNomEquipe() + " est case " + equipe.getCaseDeLequipe() + " , et est a " + nbCaseRestante + " cases de la fin");
         }
     }
 
