@@ -61,7 +61,7 @@ public class Jeu {
             int numero = (i + 1);
             System.out.println("Entrez le nom de l'équipe " + numero + " : ");
             reponseStr = sc.nextLine();
-            Equipe equipe = new Equipe(reponseStr, numero, nbJoueurs);
+            Equipe equipe = new Equipe(reponseStr, numero, nbJoueurs, 1);
             equipes.add(equipe);
         }
 
@@ -95,7 +95,7 @@ public class Jeu {
 
                 System.out.println("C'est au tour de " + nomNumClub + " de jouer!");
                 System.out.println("Sélection d'une carte au hasard...");
-                carte.selectionCarte();
+                carte.selectionCarte(joueurQuiJoue.getEquipe());
                 carte.lectureSujet();
                 carte.selectionDifficulte(sc);
                 carte.reponseJugement(joueurQuiJoue, sc);

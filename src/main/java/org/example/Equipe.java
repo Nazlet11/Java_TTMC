@@ -17,7 +17,7 @@ public class Equipe {
     public void setNbJoueur(String nomJoueur){ this.nbJoueur = nbJoueur; }
     public void setCaseDeLequipe(int caseDeLequipe){ this.caseDeLequipe = caseDeLequipe; }
 
-    public Equipe(String nomEquipe, int numEquipe, int nbJoueur){
+    public Equipe(String nomEquipe, int numEquipe, int nbJoueur, int caseDeLequipe){
 
         this.nomEquipe = nomEquipe;
         this.numEquipe = numEquipe;

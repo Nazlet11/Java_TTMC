@@ -9,6 +9,7 @@ import java.util.Random;
 
 public class Carte {
 
+    private String theme;
     private String sujet;
     private int difficulté;
     private int difMax;
@@ -19,6 +20,7 @@ public class Carte {
     File dossier;
     Random random;
 
+    public String getTheme(){return theme;}
     public String getSujet(){return sujet;}
     public int getDifficulté(){return difficulté;}
     public String getQuestion(){return question;}
@@ -27,24 +29,47 @@ public class Carte {
     public void setCheminCarte(String cheminCarte){this.cheminCarte = cheminCarte;}
 
     public Carte(String sujet, int difficulté, String question){
+        this.theme = "Improbable";
         this.sujet = "Féculents";
         this.difficulté = 1;
         this.difMax = 10;
         this.question = "Sont-ils d'orgine animale ou végétale?";
         this.reponse = "Vegetale";
-        this.cheminCarte = "/CartesCSV";
+        this.cheminCarte = "C:/CartesCSV" + "/" + this.theme;
 
         this.dossier = new File(cheminCarte);
         this.random = new Random();
     }
 
-    public void selectionCarte(){
+    public void selectionCarte(Equipe equipe){
+
+        int reste = equipe.getCaseDeLequipe() % 4;
+        switch(reste) {
+            case 1:
+                this.theme = "Improbable";
+                break;
+            case 2:
+                this.theme = "Mature";
+                break;
+            case 3:
+                this.theme = "Plaisir";
+                break;
+            case 0:
+                this.theme = "Scolaire";
+                break;
+        }
+        this.cheminCarte = "C:/CartesCSV/" + this.theme;
+        this.dossier = new File(this.cheminCarte);
+
+        System.out.println("chemin absolu recherché : " + this.dossier.getAbsolutePath());
+
         File[] fichiers = dossier.listFiles();
 
         int rd = random.nextInt(fichiers.length);
         System.out.println(fichiers[rd].getName());
+        System.out.println("Le theme sera..." + this.theme + "!");
+        this.cheminCarte = "C:/CartesCSV" + "/"  + this.theme + "/" + fichiers[rd].getName();
 
-        this.cheminCarte = "/CartesCSV" + "/"  + fichiers[rd].getName();
     }
 
     public void lectureSujet(){
